@@ -91,3 +91,42 @@ new Vue({
     }
 });
 
+// 算出プロパティ「computed」を使用。dataの変更を監視して、自動で実行される
+// 常に結果がキャッシュされていて、dataが変更されていない限り同じ結果が返され続ける
+// methodsは自分で毎回実行するたびに再計算される
+
+new Vue({
+    el: '#app9',
+    data: {
+        isShow: true
+    },
+    computed: {
+        showString: function () {
+            return (this.isShow) ? Date.now() : 'isShowはfalseです'
+        },
+
+        showString2: function () {
+            return Date.now()
+        }
+    },
+
+    methods: {
+        showStringMethod: function () {
+            return (this.isShow) ? Date.now() : 'isShowはfalseです'
+        },
+
+        showStringMethod2: function () {
+            return Date.now()
+        }
+    }
+
+});
+
+// v-htmlでサニタイズを無効化
+new Vue({
+    el: '#app10',
+    data: {
+        script: '<p style="color: red;">メッセージとして表示されます</p>'
+    }
+})
+;
