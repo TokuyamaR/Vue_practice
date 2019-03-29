@@ -59,6 +59,21 @@
         </div>
     </section>
 
+    <section class="section">
+        <div id="app7">
+            <span v-if=" isShow === 'a' ">v-if</span>
+            <span v-else-if=" isShow === 'b' ">v-else-if はv-ifと同等の要素にしか使えない</span>
+            <span v-else>v-else はv-ifと同等の要素にしか使えない</span>
+        </div>
+    </section>
+
+    <section class="section">
+        <div id="app8">
+            <span v-show="isShow">v-showで表示したタグ</span>
+            <span v-show="!isShow">v-showで見えなくなっただけのタグ（display:noneにしただけ）</span>
+        </div>
+    </section>
+
 
 </div>
 

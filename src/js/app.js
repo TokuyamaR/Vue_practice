@@ -74,3 +74,20 @@ new Vue({
         // 入力された内容が自動でデータへ更新される。さらにデータが更新されると、出力内容も自動で変わる
     }
 });
+
+// v-if v-else-if v-else で条件分岐が使用できる
+
+new Vue({
+    el: '#app7',
+    data: {
+        isShow: 'a'
+    }
+});
+
+new Vue({
+    el: '#app8',
+    data: {
+        isShow: true
+    }
+});
+
