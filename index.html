@@ -92,6 +92,58 @@
         </div>
     </section>
 
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+        {
+            opacity: 0;
+        }
+    </style>
+
+    <section class="section">
+        <div id="app11">
+            <button v-on:click=" show = !show">
+                Toggle
+            </button>
+            <transtion name="fade">
+                <p v-if="show">hello</p>
+            </transtion>
+        </div>
+    </section>
+
+    <section class="section">
+        <div id="app12">
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
+    </section>
+
+    <section class="section">
+        <div id="app13">
+            <blog-post title="このようにしてtitleプロパティを他のコンポーネンとに渡せます"></blog-post>
+            <blog-post title="それぞれのコンポーネントにtitleのpropsを渡せます。"></blog-post>
+            <blog-post title="reactのpropsと同じ機能です。"></blog-post>
+        </div>
+    </section>
+
+    <section class="section">
+        <div id="app14">
+            <div id="blog-posts-events-demo">
+                <div :style="{ fontSize: postFontSize + 'em'}">
+                    <blog-post
+                            v-for="post in posts"
+                            v-on:enlarge-text="fontSizeScale()"
+                            v-bind:key="post.id"
+                            v-bind:post="post"
+                    ></blog-post>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <script src="dist/js/bundle.js"></script>
