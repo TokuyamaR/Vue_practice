@@ -128,5 +128,72 @@ new Vue({
     data: {
         script: '<p style="color: red;">メッセージとして表示されます</p>'
     }
-})
-;
+});
+
+// transitonとanimation
+new Vue({
+    el: '#app11',
+    data: {
+        show: true
+    }
+});
+
+// コンポーネントの使用方法
+Vue.component('button-counter', {
+    // component内でのdataは必ず関数にする。通常のオブジェクト形式では、全componentでdataが共有されてしまう。
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    template: '<button v-on:click="count++">あたたたたたたたた！(コンボ数：{{count}})　終わった〜！！</button>'
+});
+new Vue({el: '#app12'});
+
+// propsの使い方
+Vue.component('blog-post', {
+    props: ['title'],
+    template: '<h3>{{title}}</h3>'
+});
+new Vue({el: '#app13'});
+
+Vue.component('blog-post', {
+    props: ['post'],
+    template: `
+   <div class="blog-post">
+      <h3>{{post.title}}</h3>
+      <button v-on:click="$emit('enlarge-text')">
+       Enlarge Text
+      </button>
+      <div v-html="post.content"></div>
+   </div>
+   `
+});
+new Vue({
+    el: '#app14',
+    data: {
+        posts: [
+            {
+                id: 1,
+                title: 'sample post 1',
+                content: '<p>サンプル投稿のコンテント</p>'
+            },
+            {
+                id: 2,
+                title: 'sample post 2',
+                content: '<p>サンプル投稿のコンテント</p>'
+            },
+            {
+                id: 3,
+                title: 'sample post 3',
+                content: '<p>サンプル投稿のコンテント</p>'
+            }
+        ],
+        postFontSize: 1
+    },
+    methods: {
+        fontSizeScale() {
+            this.postFontSize += 0.1;
+        }
+    }
+});
